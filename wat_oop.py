@@ -239,23 +239,22 @@ class WatTrainer:
 
 if __name__ == "__main__":
     run_all = [
-        {"name":  "deleteme", "learning_rate":0.01, "batch_size":512, "epochs": 2, "seed": None},
-        # {"name":  "z6_1_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_2_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_3_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_4_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_5_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_6_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_7_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_8_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_9_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z6_10_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z7_11_glorot_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z7_12_glorot_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z7_13_glorot_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z7_14_glorot_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
-        # {"name":  "z7_15_glorot_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
-        
+        {"name":  "z6_1_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_2_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_3_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_4_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_5_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_6_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_7_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_8_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_9_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_10_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        # Larger learning rate
+        {"name":  "z6_11_he_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_12_he_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_13_he_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_14_he_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_15_he_simple6_rej8_0.1_512_10000", "learning_rate":0.1, "batch_size":512, "epochs": 10000, "seed": None},
     ]
     histories_for_plotting =[]
     for config in run_all:
