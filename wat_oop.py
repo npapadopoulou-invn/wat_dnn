@@ -31,7 +31,7 @@ from datetime import datetime
 from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint # type: ignore
 import random
 from utils.lr_schedulers import WarmupThenExpDecayScheduler
-from utils.eval_only import get_cm
+from utils.eval_only import ConfusionMatrix
 from utils.plots import plot_snippets, plot_multitrain
 import gc
 
@@ -198,11 +198,11 @@ class WatTrainer:
     
 
     def evaluate(self, X_test, y_test):
-        y_pred_probs = self.model.predict(X_test)
+        y_pred_probs = self.model.predict(X_test) #  Proba per frame for each class , (N, 1600, 3)
         threshold = 0.7
-        y_pred = np.argmax(y_pred_probs, axis=-1)
+        y_pred = np.argmax(y_pred_probs, axis=-1) #(N, 1600)
         y_pred_max_probs = np.max(y_pred_probs, axis=-1)
-        y_pred = np.where(y_pred_max_probs >= threshold, y_pred, 0)
+        y_pred = np.where(y_pred_max_probs >= threshold, y_pred, 0) # Where the model is NOT confident enough, I will put it as "NONE"
 
         np.save(f"{self.paths['model_eval']}/y_pred.npy", y_pred_probs)
         np.save(f"{self.paths['model_eval']}/y_test.npy", y_test)
@@ -214,9 +214,8 @@ class WatTrainer:
         print(classification_report(y_test_flat, y_pred_flat, target_names=label_list, labels=labels, zero_division=0))
 
         ascii_border("Confusion Matrix")
-        cm = confusion_matrix(y_test_flat, y_pred_flat, labels=labels, normalize='true')
-        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=label_list)
-        disp.plot(cmap=plt.cm.Blues)
+        cm = ConfusionMatrix(name=self.name, label_list=label_list, labels=labels)
+        cm.get_cm()
         print(cm)
         plt.savefig(f"{self.paths['output']}/confusion_matrix_th{threshold}.png")
 
@@ -231,10 +230,8 @@ class WatTrainer:
         plt.tight_layout()
         plt.savefig(f"{self.paths['output']}/accuracy_plot.png")
 
-        get_cm(name=self.name, label_list=label_list, labels=labels)
+        # get_cm(name=self.name, label_list=label_list, labels=labels)
         plot_snippets(X_test, y_test, self.name, y_pred_probs, y_pred, self.all_snippets)
-
-
 
 
 if __name__ == "__main__":
@@ -302,7 +299,6 @@ if __name__ == "__main__":
             trn_nb = config["name"].split("_")[0]                       #name of the folder with multi train accuracy plots
 
         plot_multitrain(histories_for_plotting, trn_nb)
-
 
 
 

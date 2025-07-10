@@ -15,7 +15,7 @@ def plot_multitrain(histories_for_plotting, trn_nb):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(f"/home/npapadopoulou/wat/multiplots/{trn_nb}_all_val_accuracy_plot.png")
+    plt.savefig(f"/home/npapadopoulou/wat/outputs/multiplots/{trn_nb}_all_val_accuracy_plot.png")
     plt.show()
 
 
