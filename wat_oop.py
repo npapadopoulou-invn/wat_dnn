@@ -133,8 +133,9 @@ class WatTrainer:
             Dropout(rate = 0.2, seed =self.seed),
 
             GRU(10, return_sequences=True, reset_after=True , recurrent_activation='sigmoid',
-                recurrent_initializer="orthogonal",
-                kernel_regularizer=regularizers.l1_l2(1e-5),  kernel_initializer=self.initializer, seed = self.seed),
+                # recurrent_initializer="orthogonal",
+                recurrent_initializer='glorot_uniform', # 'he_normal' or 'glorot_uniform'
+                kernel_regularizer=regularizers.l1_l2(1e-3, 1e-4),  kernel_initializer=self.initializer, seed = self.seed),
             BatchNormalization(),
 
             Dense(len(label_map), activation='softmax',kernel_regularizer=regularizers.l2(1e-4))
@@ -236,11 +237,7 @@ class WatTrainer:
 
 if __name__ == "__main__":
     run_all = [
-        {"name":  "z6_1_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        {"name":  "z6_2_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        {"name":  "z6_3_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        {"name":  "z6_4_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
-        {"name":  "z6_5_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
+        {"name":  "z6_5_he_simple6_rej8_0.01_512_1000_recuinit_glorot", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
         {"name":  "z6_6_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
         {"name":  "z6_7_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
         {"name":  "z6_8_he_simple6_rej8_0.01_512_10000", "learning_rate":0.01, "batch_size":512, "epochs": 10000, "seed": None},
